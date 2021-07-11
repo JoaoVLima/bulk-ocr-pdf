@@ -1,0 +1,13 @@
+#!/bin/bash
+echo 'Começando o OCR!'
+echo 'Este procedimento pode demorar vários minutos.' 
+echo 'Convertendo o PDF em img'
+convert -density 300 -depth 8 -quality 100 "$1" .output.tiff &&
+echo 'PDF convertido em img'
+echo 'Convertendo img em PDF pesquisavel'
+tesseract .output.tiff "${1%.*}_ocr" --dpi 300 -l porfast pdf &&
+echo 'Img convertida em PDF pesquisavel'
+echo 'Excluindo as imagens'
+rm .output.tiff
+echo 'Imagens excluidas'
+echo 'fim'

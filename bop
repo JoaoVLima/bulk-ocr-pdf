@@ -1,0 +1,5 @@
+#!/bin/bash
+echo $(date) >> tempo.log
+for i in *.pdf; do ./ocr "$i"; done
+echo "fim do bop"
+echo $(date) >> tempo.log
